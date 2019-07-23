@@ -1,47 +1,49 @@
+// Priority Queue, a queue with additional information that determines the priority of the item
+
 function PriorityQueue () {
-    let collection = [];
-    this.printCollection = function() {
-      return collection;
-    };
-    this.enqueue = (item) => {
+  // init our queue
+  this.collection = [];
 
-      if (this.isEmpty()) {
-        collection.push(item) //check if array is empty, if so just push to array
-      } else {
-        let added = false;
-        for (let i = 0; i < collection.length; i++) {
-          if(item[1] < collection[i][1]) {
-            collection.splice(i, 0, item)
-            added = true;
-            break;
-          }
-        }
-        if(!added) {
-          collection.push(item) //if we go through array and priority isnt greater than what is already in array then just push to the end
+  // print queue
+  this.printCollection = () => this.collection;
+
+  // enqueue method for prioritiy given an array with the first index being the item and second being the priority
+  // ex. ['conner', 2]
+  this.enqueue = (item) => {
+    // if queue is empty, push to the end
+    if (this.isEmpty()) {
+      this.collection.push(item);
+    } else {
+      // if not find where item priority is less than priority already in queue
+      let added = false;
+      for(let i = 0; i < this.collection.length; i++) {
+        if (item[1] < this.collection[i][1]) {
+          this.collection.splice(i, 0, item)
+          added = true;
+          break;
         }
       }
-
-    }
-
-    this.dequeue = () => {
-
-      let item = collection.shift()
-
-      return item[0];
-      
-    };
-
-    this.size = () => collection.length;
-
-    this.front = () => collection[0];
-
-    this.isEmpty = () => {
-      if(collection.length === 0) {
-        return true;
-      } else {
-        return false;
+      if(!added) {
+        // if item is of lowest priority, push to the end
+        this.collection.push(item)
       }
     }
+  }
+
+  // remove first item in queue, return the item without the priority
+  this.dequeue = () => {
+    const item = this.collection.shift();
+    return item[0]
+  }
+
+  // return the size of the queue
+  this.size = () => this.collection.length;
+
+  // return the first item in the queue
+  this.front = () => this.collection[0];
+
+  // return wether the queue is empty or not
+  this.isEmpty = () => this.collection.length === 0 ? true:false;
 }
 
 const pq = new PriorityQueue;
