@@ -44,7 +44,7 @@ function PriorityQueue () {
     }
 }
 
-let pq = new PriorityQueue;
+const pq = new PriorityQueue;
 
 pq.enqueue(['conner', 1])
 pq.enqueue(['tim', 1])
