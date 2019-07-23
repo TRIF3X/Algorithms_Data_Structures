@@ -1,3 +1,5 @@
+// Stack - First In Last Out, FILO
+
 function Stack() { 
     // intialize our stack
     let collection = [];
