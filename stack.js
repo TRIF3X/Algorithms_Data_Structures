@@ -14,3 +14,19 @@ function Stack() {
     // clear out the stack
     this.clear = () => collection = [];
 }
+
+const stack = new Stack();
+
+stack.push(10)
+stack.push(8)
+stack.push(5)
+
+console.log(stack.print())
+
+stack.pop()
+console.log(stack.peek())
+console.log(stack.isEmpty())
+
+console.log(stack.print())
+stack.clear()
+console.log(stack.isEmpty())
