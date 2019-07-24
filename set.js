@@ -19,12 +19,40 @@ function Set() {
           return true;
         }
     }
+
+    // this method will check for the element in our collection, if we have the element it will remove it and return true, otherwise it will return false
+    this.remove = (element) => {
+        if(this.has(element) === true) {
+         let index = collection.indexOf(element)  
+         collection.splice(index, 1)
+         return true;
+        } else {
+            return false;
+        }
+    }
+
+    // returns the size of the collection
+    this.size = () => collection.length;
+
+    // combines the two sets
+    this.union = (new_set) => {
+        for(let i = 0; i < new_set.length; i++) {
+            if(this.has(new_set[i]) === false) {
+                collection.push(new_set[i])
+            }
+        }
+     } 
     
 }
 
 const set = new Set()
 
-set.add('hello')
-set.add('there')
-set.add('hello')
+set.add('a')
+set.add('b')
+set.add('c')
 console.log(set.values())
+set.remove('b')
+console.log(set.values())
+set.union(['a', 'b', 'd', 'e'])
+console.log(set.values())
+
